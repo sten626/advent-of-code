@@ -8,7 +8,7 @@ enum Move {
   Scissors = 3,
 }
 
-const moves: { [key: string]: Move } = {
+const moves: Record<string, Move> = {
   A: Move.Rock,
   B: Move.Paper,
   C: Move.Scissors,
@@ -17,7 +17,7 @@ const moves: { [key: string]: Move } = {
   Z: Move.Scissors,
 };
 
-const desiredOutcomes: { [key: string]: MatchOutcome } = {
+const desiredOutcomes: Record<string, MatchOutcome> = {
   X: 0,
   Y: 3,
   Z: 6,

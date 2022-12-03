@@ -1,6 +1,6 @@
 import { intersection, open } from '../shared';
 
-const priorities: { [key: string]: number } = {};
+const priorities: Record<string, number> = {};
 let i = 1;
 
 for (const letter of 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ') {
