@@ -1,3 +1,8 @@
 {
-  "recommendations": ["kakumei.ts-debug"]
+  "recommendations": [
+    "kakumei.ts-debug",
+    "editorconfig.editorconfig",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode"
+  ]
 }

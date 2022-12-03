@@ -19,3 +19,5 @@ npm run solve <year> <day>
 ```
 
 This will execute the given solution file using `ts-node`.
+
+You can also run solutions in VS Code using the included run configuration and the recommended extension [TypeScript Debugger](https://marketplace.visualstudio.com/items?itemName=kakumei.ts-debug).
