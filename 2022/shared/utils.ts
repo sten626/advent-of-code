@@ -13,6 +13,26 @@ export function intersection<T>(setA: Set<T>, setB: Set<T>): Set<T> {
   return common;
 }
 
+export function isSuperset<T>(set: Set<T>, subset: Set<T>): boolean {
+  for (const elem of subset) {
+    if (!set.has(elem)) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+export function union<T>(setA: Set<T>, setB: Set<T>): Set<T> {
+  const unionSet = new Set<T>(setA);
+
+  for (const elem of setB) {
+    unionSet.add(elem);
+  }
+
+  return unionSet;
+}
+
 export function open(path: string): Interface {
   const fileStream = createReadStream(path);
   const rl = createInterface({

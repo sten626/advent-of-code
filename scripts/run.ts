@@ -15,12 +15,14 @@ const argv = yargs(process.argv.slice(2))
   })
   .parseSync();
 
-const file = path.resolve(
+const solutionDir = path.resolve(
   __dirname,
   '..',
   `${argv.year}`,
-  `day${argv.day}`,
-  'solve.ts'
+  `day${argv.day}`
 );
+process.chdir(solutionDir);
+
+const file = path.resolve(solutionDir, 'solve.ts');
 
 require(file);
