@@ -50,7 +50,6 @@ async function* makeElfGroups(
 }
 
 async function main() {
-  process.chdir(__dirname);
   await part1();
   await part2();
 }

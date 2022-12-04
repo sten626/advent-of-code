@@ -1,7 +1,6 @@
 import { open } from '../shared';
 
 async function main() {
-  process.chdir(__dirname);
   const elfCalories = await parseElfCaloriesList('input.txt');
   part1(elfCalories);
   part2(elfCalories);

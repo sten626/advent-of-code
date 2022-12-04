@@ -24,7 +24,6 @@ const desiredOutcomes: Record<string, MatchOutcome> = {
 };
 
 async function main() {
-  process.chdir(__dirname);
   await part1();
   await part2();
 }
