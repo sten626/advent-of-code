@@ -2,7 +2,6 @@
   "name": "advent-of-code",
   "description": "",
   "version": "1.0.0",
-  "main": "index.js",
   "author": "Steven Indzeoski",
   "license": "ISC",
   "scripts": {
