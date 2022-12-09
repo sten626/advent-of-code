@@ -41,7 +41,7 @@ async function parse(
 
   for await (const line of open(filename)) {
     if (line.match(crateLineRegex)) {
-      let stack_num = 1;
+      let stackNum = 1;
       let start = 0;
       let end = Math.min(4, line.length);
 
@@ -50,17 +50,17 @@ async function parse(
         const match = chunk.match(crateRegex);
 
         if (match) {
-          let stack = crateStacks.get(stack_num);
+          let stack = crateStacks.get(stackNum);
 
           if (!stack) {
             stack = [];
-            crateStacks.set(stack_num, stack);
+            crateStacks.set(stackNum, stack);
           }
 
           stack.push(match[0]);
         }
 
-        stack_num += 1;
+        stackNum += 1;
         start += 4;
         end = Math.min(start + 4, line.length);
       }

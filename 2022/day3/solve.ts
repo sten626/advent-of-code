@@ -82,8 +82,8 @@ async function* splitRucksacksIntoCompartments(
   rucksacks: AsyncGenerator<string>
 ): AsyncGenerator<string[]> {
   for await (const rucksack of rucksacks) {
-    const n_items = rucksack.length;
-    const halfway = n_items / 2;
+    const nItems = rucksack.length;
+    const halfway = nItems / 2;
     const compartment1 = rucksack.slice(0, halfway);
     const compartment2 = rucksack.slice(halfway);
     yield [compartment1, compartment2];

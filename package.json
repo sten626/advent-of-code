@@ -5,6 +5,7 @@
   "author": "Steven Indzeoski",
   "license": "ISC",
   "scripts": {
+    "lint": "npx eslint .",
     "solve": "ts-node scripts/run.ts"
   },
   "devDependencies": {

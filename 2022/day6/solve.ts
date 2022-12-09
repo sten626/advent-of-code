@@ -41,14 +41,14 @@ async function parseLine(inputFile: string): Promise<string> {
 
 async function part1(inputFile: string) {
   const buffer = await parseLine(inputFile);
-  const n_processed = findPacketMarker(buffer);
-  console.log(`Start of packet marker after ${n_processed} characters`);
+  const nProcessed = findPacketMarker(buffer);
+  console.log(`Start of packet marker after ${nProcessed} characters`);
 }
 
 async function part2(inputFile: string) {
   const buffer = await parseLine(inputFile);
-  const n_processed = findMessageMarker(buffer);
-  console.log(`Start of message marker after ${n_processed} characters`);
+  const nProcessed = findMessageMarker(buffer);
+  console.log(`Start of message marker after ${nProcessed} characters`);
 }
 
 main('input.txt');
