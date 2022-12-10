@@ -74,4 +74,4 @@ async function main(inputFile: string) {
   console.log(`Part 2: Maximum scenic score is ${maxScenicScore}`);
 }
 
-main('input.txt');
+main(process.argv[2]);

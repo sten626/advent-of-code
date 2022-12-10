@@ -28,9 +28,9 @@ function getTopCrates(crateStacks: Map<number, string[]>): string {
   return result;
 }
 
-async function main() {
-  await part1();
-  await part2();
+async function main(inputFile: string) {
+  await part1(inputFile);
+  await part2(inputFile);
 }
 
 async function parse(
@@ -88,15 +88,15 @@ async function parse(
   return [crateStacks, instructionQueue];
 }
 
-async function part1() {
-  const [crateStacks, instructionQueue] = await parse('input.txt');
+async function part1(inputFile: string) {
+  const [crateStacks, instructionQueue] = await parse(inputFile);
   const result = processInstructions(crateStacks, instructionQueue);
   const topCrates = getTopCrates(result);
   console.log(topCrates);
 }
 
-async function part2() {
-  const [crateStacks, instructionQueue] = await parse('input.txt');
+async function part2(inputFile: string) {
+  const [crateStacks, instructionQueue] = await parse(inputFile);
   const result = processInstructions2(crateStacks, instructionQueue);
   const topCrates = getTopCrates(result);
   console.log(topCrates);
@@ -183,4 +183,4 @@ function processInstructions2(
   return result;
 }
 
-main();
+main(process.argv[2]);

@@ -120,4 +120,4 @@ async function* parseInstructions(
 //   console.log();
 // }
 
-main('input.txt');
+main(process.argv[2]);

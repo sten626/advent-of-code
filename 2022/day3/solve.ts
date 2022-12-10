@@ -49,9 +49,9 @@ async function* makeElfGroups(
   }
 }
 
-async function main() {
-  await part1();
-  await part2();
+async function main(inputFile: string) {
+  await part1(inputFile);
+  await part2(inputFile);
 }
 
 async function* parseRucksacks(path: string): AsyncGenerator<string> {
@@ -60,18 +60,18 @@ async function* parseRucksacks(path: string): AsyncGenerator<string> {
   }
 }
 
-async function part1() {
+async function part1(inputFile: string) {
   console.log('Part 1:');
-  const rucksacks = parseRucksacks('input.txt');
+  const rucksacks = parseRucksacks(inputFile);
   const splitRucksacks = splitRucksacksIntoCompartments(rucksacks);
   const commonItems = findCommonItems(splitRucksacks);
   const sum = await sumOfCommonItemPriorities(commonItems);
   console.log(`Sum of priorities is ${sum}`);
 }
 
-async function part2() {
+async function part2(inputFile: string) {
   console.log('Part 2:');
-  const rucksacks = parseRucksacks('input.txt');
+  const rucksacks = parseRucksacks(inputFile);
   const elfGroups = makeElfGroups(rucksacks);
   const commonItemsForGroup = findCommonItemsInElfGroups(elfGroups);
   const sum = await sumOfCommonItemPriorities(commonItemsForGroup);
@@ -104,4 +104,4 @@ async function sumOfCommonItemPriorities(
   return sum;
 }
 
-main();
+main(process.argv[2]);

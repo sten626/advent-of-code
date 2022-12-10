@@ -1,7 +1,7 @@
 import { open } from '../shared';
 
-async function main() {
-  const elfCalories = await parseElfCaloriesList('input.txt');
+async function main(inputFile: string) {
+  const elfCalories = await parseElfCaloriesList(inputFile);
   part1(elfCalories);
   part2(elfCalories);
 }
@@ -35,4 +35,4 @@ function part2(elfCalories: number[]) {
   console.log(`The top three elves are carrying ${topThreeSum} calories.`);
 }
 
-main();
+main(process.argv[2]);

@@ -15,7 +15,7 @@ npm install
 I've created a helper script to help with executing my solutions. It can be ran via npm with the command:
 
 ```shell
-npm run solve <year> <day>
+npm run solve -- <year> <day> [options]
 ```
 
 This will execute the given solution file using `ts-node`.

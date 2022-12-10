@@ -1,8 +1,8 @@
 import { intersection, open, union } from '../shared';
 
-async function main() {
-  await part1();
-  await part2();
+async function main(inputFile: string) {
+  await part1(inputFile);
+  await part2(inputFile);
 }
 
 async function* parseElfPairSections(
@@ -24,9 +24,9 @@ async function* parseElfPairSections(
   }
 }
 
-async function part1() {
+async function part1(inputFile: string) {
   console.log('Part 1');
-  const allElfPairSections = parseElfPairSections('input.txt');
+  const allElfPairSections = parseElfPairSections(inputFile);
   let overlappingSections = 0;
 
   for await (const elfPairSections of allElfPairSections) {
@@ -40,9 +40,9 @@ async function part1() {
   );
 }
 
-async function part2() {
+async function part2(inputFile: string) {
   console.log('Part 2');
-  const allElfPairSections = parseElfPairSections('input.txt');
+  const allElfPairSections = parseElfPairSections(inputFile);
   let overlappingSections = 0;
 
   for await (const elfPairSections of allElfPairSections) {
@@ -72,4 +72,4 @@ function sectionsOverlapAtAll(elfPairSections: Set<number>[]): boolean {
   return elfPairSections.reduce((a, b) => intersection(a, b)).size > 0;
 }
 
-main();
+main(process.argv[2]);

@@ -23,9 +23,9 @@ const desiredOutcomes: Record<string, MatchOutcome> = {
   Z: 6,
 };
 
-async function main() {
-  await part1();
-  await part2();
+async function main(inputFile: string) {
+  await part1(inputFile);
+  await part2(inputFile);
 }
 
 function outcome(move: Move, response: Move): MatchOutcome {
@@ -86,10 +86,10 @@ function parseLine2(line: string): [Move, Move] {
   return [move, response];
 }
 
-async function part1() {
+async function part1(inputFile: string) {
   let score = 0;
 
-  for await (const line of open('input.txt')) {
+  for await (const line of open(inputFile)) {
     const [move, response] = parseLine(line);
     score += response + outcome(move, response);
   }
@@ -97,10 +97,10 @@ async function part1() {
   console.log(`Your score is ${score}.`);
 }
 
-async function part2() {
+async function part2(inputFile: string) {
   let score = 0;
 
-  for await (const line of open('input.txt')) {
+  for await (const line of open(inputFile)) {
     const [move, response] = parseLine2(line);
     score += response + outcome(move, response);
   }
@@ -108,4 +108,4 @@ async function part2() {
   console.log(`Your score is ${score}.`);
 }
 
-main();
+main(process.argv[2]);

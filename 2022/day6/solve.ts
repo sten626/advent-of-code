@@ -51,4 +51,4 @@ async function part2(inputFile: string) {
   console.log(`Start of message marker after ${nProcessed} characters`);
 }
 
-main('input.txt');
+main(process.argv[2]);
