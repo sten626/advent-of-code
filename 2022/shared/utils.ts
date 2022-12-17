@@ -1,6 +1,14 @@
 import { createReadStream } from 'node:fs';
 import { createInterface, Interface } from 'node:readline';
 
+export function* chain<T>(...iterables: Iterable<T>[]): Generator<T> {
+  for (const iterable of iterables) {
+    for (const element of iterable) {
+      yield element;
+    }
+  }
+}
+
 export function intersection<T>(setA: Set<T>, setB: Set<T>): Set<T> {
   const common = new Set<T>();
 
