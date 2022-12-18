@@ -1,6 +1,26 @@
 import { createReadStream } from 'node:fs';
 import { createInterface, Interface } from 'node:readline';
 
+export function all(iterable: Iterable<boolean>): boolean {
+  for (const element of iterable) {
+    if (!element) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+export function any(iterable: Iterable<boolean>): boolean {
+  for (const element of iterable) {
+    if (element) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
 export function* chain<T>(...iterables: Iterable<T>[]): Generator<T> {
   for (const iterable of iterables) {
     for (const element of iterable) {
@@ -49,4 +69,32 @@ export function open(path: string): Interface {
   });
 
   return rl;
+}
+
+export function range(stop: number): Generator<number>;
+export function range(
+  start: number,
+  stop: number,
+  step?: number
+): Generator<number>;
+export function* range(
+  startOrStop: number,
+  stop?: number,
+  step?: number
+): Generator<number> {
+  let start = 0;
+
+  if (stop === undefined) {
+    stop = startOrStop;
+  } else {
+    start = startOrStop;
+  }
+
+  if (step === undefined) {
+    step = 1;
+  }
+
+  for (let i = start; i < stop; i += step) {
+    yield i;
+  }
 }
