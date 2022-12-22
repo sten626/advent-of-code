@@ -29,6 +29,21 @@ export function* chain<T>(...iterables: Iterable<T>[]): Generator<T> {
   }
 }
 
+export function* cycle<T>(iterable: Iterable<T>): Generator<T> {
+  const saved = [];
+
+  for (const element of iterable) {
+    yield element;
+    saved.push(element);
+  }
+
+  while (saved.length > 0) {
+    for (const element of saved) {
+      yield element;
+    }
+  }
+}
+
 export function intersection<T>(setA: Set<T>, setB: Set<T>): Set<T> {
   const common = new Set<T>();
 
