@@ -1,4 +1,4 @@
-import { open } from '../shared';
+import { open } from '../../shared';
 
 type MatchOutcome = 0 | 3 | 6;
 

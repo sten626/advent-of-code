@@ -1,4 +1,4 @@
-import { intersection, open } from '../shared';
+import { intersection, open } from '../../shared';
 
 const priorities: Record<string, number> = {};
 let i = 1;
@@ -8,12 +8,12 @@ for (const letter of 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ') {
 }
 
 async function* findCommonItems(
-  rucksacks: AsyncGenerator<string[]>
+  rucksacks: AsyncGenerator<string[]>,
 ): AsyncGenerator<Set<string>> {
   for await (const [compartment1, compartment2] of rucksacks) {
     const commonItems = intersection(
       new Set(compartment1),
-      new Set(compartment2)
+      new Set(compartment2),
     );
 
     if (commonItems.size > 1) {
@@ -25,7 +25,7 @@ async function* findCommonItems(
 }
 
 async function* findCommonItemsInElfGroups(
-  elfGroups: AsyncGenerator<string[]>
+  elfGroups: AsyncGenerator<string[]>,
 ): AsyncGenerator<Set<string>> {
   for await (const elfGroup of elfGroups) {
     yield elfGroup
@@ -35,7 +35,7 @@ async function* findCommonItemsInElfGroups(
 }
 
 async function* makeElfGroups(
-  rucksacks: AsyncGenerator<string>
+  rucksacks: AsyncGenerator<string>,
 ): AsyncGenerator<string[]> {
   let group = [];
 
@@ -79,7 +79,7 @@ async function part2(inputFile: string) {
 }
 
 async function* splitRucksacksIntoCompartments(
-  rucksacks: AsyncGenerator<string>
+  rucksacks: AsyncGenerator<string>,
 ): AsyncGenerator<string[]> {
   for await (const rucksack of rucksacks) {
     const nItems = rucksack.length;
@@ -91,7 +91,7 @@ async function* splitRucksacksIntoCompartments(
 }
 
 async function sumOfCommonItemPriorities(
-  commonItems: AsyncGenerator<Set<string>>
+  commonItems: AsyncGenerator<Set<string>>,
 ): Promise<number> {
   let sum = 0;
 

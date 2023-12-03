@@ -1,9 +1,9 @@
-import { open } from '../shared';
+import { open } from '../../shared';
 
 type Position = [number, number];
 
 const heights = new Map(
-  'abcdefghijklmnopqrstuvwxyz'.split('').map((v, i) => [v, i + 1])
+  'abcdefghijklmnopqrstuvwxyz'.split('').map((v, i) => [v, i + 1]),
 );
 heights.set('S', 1);
 heights.set('E', 26);

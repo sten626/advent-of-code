@@ -1,5 +1,5 @@
 import { readFileSync } from 'fs';
-import { range } from '../shared';
+import { range } from '../../shared';
 
 interface Valve {
   name: string;
@@ -38,7 +38,7 @@ function main(inputFile: string) {
   for (const [i, valve] of valves.entries()) {
     flow.set(i, valve.flow);
     const adjacent = valve.tunnels.map(
-      (tunnelName) => nameToIndexMap.get(tunnelName) as number
+      (tunnelName) => nameToIndexMap.get(tunnelName) as number,
     );
     adjacentMap.set(i, adjacent);
   }
@@ -67,14 +67,14 @@ function main(inputFile: string) {
           pressure = Math.max(
             pressure,
             opt[time - 1][valveIndex][bitsetCombination - valveBit] +
-              (flow.get(valveIndex) as number) * time
+              (flow.get(valveIndex) as number) * time,
           );
         }
 
         for (const adjacentIndex of adjacentMap.get(valveIndex) as number[]) {
           pressure = Math.max(
             pressure,
-            opt[time - 1][adjacentIndex][bitsetCombination]
+            opt[time - 1][adjacentIndex][bitsetCombination],
           );
         }
 
@@ -97,7 +97,7 @@ function main(inputFile: string) {
     const elephantBits = openBitset - 1 - personBits;
     best = Math.max(
       best,
-      opt[25][aaIndex][personBits] + opt[25][aaIndex][elephantBits]
+      opt[25][aaIndex][personBits] + opt[25][aaIndex][elephantBits],
     );
   }
 

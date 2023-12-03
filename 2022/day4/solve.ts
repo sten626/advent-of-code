@@ -1,4 +1,4 @@
-import { intersection, open, union } from '../shared';
+import { intersection, open, union } from '../../shared';
 
 async function main(inputFile: string) {
   await part1(inputFile);
@@ -6,7 +6,7 @@ async function main(inputFile: string) {
 }
 
 async function* parseElfPairSections(
-  path: string
+  path: string,
 ): AsyncGenerator<Set<number>[]> {
   for await (const line of open(path)) {
     yield line
@@ -36,7 +36,7 @@ async function part1(inputFile: string) {
   }
 
   console.log(
-    `There are ${overlappingSections} pairs with overlapping sections`
+    `There are ${overlappingSections} pairs with overlapping sections`,
   );
 }
 
@@ -52,7 +52,7 @@ async function part2(inputFile: string) {
   }
 
   console.log(
-    `There are ${overlappingSections} pairs with overlapping sections`
+    `There are ${overlappingSections} pairs with overlapping sections`,
   );
 }
 

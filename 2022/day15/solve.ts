@@ -1,5 +1,5 @@
 import { readFileSync } from 'node:fs';
-import { all, any, range } from '../shared';
+import { all, any, range } from '../../shared';
 
 type Point = [number, number];
 type Quadrant = [Point, Point];
@@ -7,7 +7,10 @@ type Quadrant = [Point, Point];
 class SensorBeaconPair {
   private readonly _distance: number;
 
-  constructor(public sensor: Point, public beacon: Point) {
+  constructor(
+    public sensor: Point,
+    public beacon: Point,
+  ) {
     this._distance =
       Math.abs(sensor[0] - beacon[0]) + Math.abs(sensor[1] - beacon[1]);
   }
@@ -28,8 +31,9 @@ class SensorBeaconPair {
     const corners: Point[] = [min, [min[0], max[1]], [max[0], min[1]], max];
     const largestDistance = Math.max(
       ...corners.map(
-        (c) => Math.abs(c[0] - this.sensor[0]) + Math.abs(c[1] - this.sensor[1])
-      )
+        (c) =>
+          Math.abs(c[0] - this.sensor[0]) + Math.abs(c[1] - this.sensor[1]),
+      ),
     );
 
     return largestDistance > this.distance;
@@ -46,7 +50,7 @@ class SensorBeaconPair {
 function findDistressBeaconDivideAndConquer(
   map: SensorBeaconPair[],
   minXY: number,
-  maxXY: number
+  maxXY: number,
 ): Point {
   const startMin: Point = [minXY, minXY];
   const startMax: Point = [maxXY, maxXY];
@@ -87,8 +91,8 @@ function findDistressBeaconDivideAndConquer(
         if (
           all(
             map.map((pair) =>
-              pair.canContainUnseenPoints(quadrant[0], quadrant[1])
-            )
+              pair.canContainUnseenPoints(quadrant[0], quadrant[1]),
+            ),
           )
         ) {
           stack.push(quadrant);
@@ -139,10 +143,10 @@ function part1(map: SensorBeaconPair[], isSample: boolean) {
   }
 
   const minX = Math.min(
-    ...map.map((pair) => Math.min(pair.sensor[0], pair.beacon[0]))
+    ...map.map((pair) => Math.min(pair.sensor[0], pair.beacon[0])),
   );
   const maxX = Math.max(
-    ...map.map((pair) => Math.max(pair.sensor[0], pair.beacon[0]))
+    ...map.map((pair) => Math.max(pair.sensor[0], pair.beacon[0])),
   );
   const maxRange = Math.max(...map.map((pair) => pair.distance));
   const startX = minX - maxRange;
@@ -163,7 +167,7 @@ function part1(map: SensorBeaconPair[], isSample: boolean) {
   }
 
   console.log(
-    `Part 1: In row ${y}, ${seenPoints} positions cannot contain a beacon.`
+    `Part 1: In row ${y}, ${seenPoints} positions cannot contain a beacon.`,
   );
 }
 

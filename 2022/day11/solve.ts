@@ -1,4 +1,4 @@
-import { open } from '../shared';
+import { open } from '../../shared';
 
 // class Monkey {
 //   items: number[] = [];
@@ -128,7 +128,7 @@ async function part2(inputFile: string) {
 function processRounds(
   numRounds: number,
   monkeys: Monkey[],
-  relaxing: boolean
+  relaxing: boolean,
 ): Map<number, number> {
   const inspectionCounts = new Map<number, number>();
   const lcd = monkeys.map((m) => m.testDivisor).reduce((a, b) => a * b);

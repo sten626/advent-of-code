@@ -1,4 +1,4 @@
-import { open } from '../shared';
+import { open } from '../../shared';
 
 type Direction = 'U' | 'R' | 'D' | 'L';
 type Instruction = [Direction, number];
@@ -92,7 +92,7 @@ function move(knots: Position[], visited: Set<string>, inst: Instruction) {
 }
 
 async function* parseInstructions(
-  inputFile: string
+  inputFile: string,
 ): AsyncGenerator<Instruction> {
   for await (const line of open(inputFile)) {
     const [dirString, length] = line.split(' ');

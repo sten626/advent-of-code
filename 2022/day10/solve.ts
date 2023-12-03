@@ -1,9 +1,12 @@
-import { open } from '../shared';
+import { open } from '../../shared';
 
 type Command = 'addx' | 'noop';
 
 class Instruction {
-  constructor(public command: Command, public value?: number) {}
+  constructor(
+    public command: Command,
+    public value?: number,
+  ) {}
 }
 
 async function main(inputFile: string) {
@@ -24,7 +27,7 @@ async function main(inputFile: string) {
       const signalStrength = totalCycles * x;
       signalStrengthSum += signalStrength;
       console.log(
-        `During cycle ${totalCycles} X is ${x} for a signal strength ${signalStrength}`
+        `During cycle ${totalCycles} X is ${x} for a signal strength ${signalStrength}`,
       );
     }
 
@@ -80,7 +83,7 @@ async function main(inputFile: string) {
 }
 
 async function* parseInstructions(
-  inputFile: string
+  inputFile: string,
 ): AsyncGenerator<Instruction> {
   for await (const line of open(inputFile)) {
     if (line.includes(' ')) {

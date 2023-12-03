@@ -1,4 +1,4 @@
-import { open } from '../shared';
+import { open } from '../../shared';
 
 function findMarker(buffer: string, size: number): number {
   let start = 0;

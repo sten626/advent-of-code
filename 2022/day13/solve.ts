@@ -1,5 +1,5 @@
 import { readFileSync } from 'node:fs';
-import { chain } from '../shared';
+import { chain } from '../../shared';
 
 type NestedArray = Array<number | NestedArray>;
 type Packet = NestedArray | number;
@@ -68,7 +68,7 @@ function main(inputFile: string) {
 
   const dividerPackets: Packet[] = [[[2]], [[6]]];
   const allPackets = [...chain<Packet>(...packetPairs, dividerPackets)].sort(
-    compare
+    compare,
   );
   const first =
     allPackets.findIndex((p) => p.toString() == [[2]].toString()) + 1;
@@ -87,7 +87,7 @@ function parsePacketPairs(inputFile: string): Pair[] {
       pairString
         .trim()
         .split('\n')
-        .map((packet) => eval(packet))
+        .map((packet) => eval(packet)),
     ) as Pair[];
 }
 

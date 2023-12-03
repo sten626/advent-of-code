@@ -1,4 +1,4 @@
-import { open } from '../shared';
+import { open } from '../../shared';
 
 async function main(inputFile: string) {
   const rows = [];

@@ -1,4 +1,4 @@
-import { open } from '../shared';
+import { open } from '../../shared';
 
 type Instruction = [number, number, number]; // quantity, source, destination
 
@@ -34,7 +34,7 @@ async function main(inputFile: string) {
 }
 
 async function parse(
-  filename: string
+  filename: string,
 ): Promise<[Map<number, string[]>, Instruction[]]> {
   const crateStacks = new Map<number, string[]>();
   const instructionQueue: Instruction[] = [];
@@ -104,7 +104,7 @@ async function part2(inputFile: string) {
 
 function processInstructions(
   crateStacks: Map<number, string[]>,
-  instructionQueue: Instruction[]
+  instructionQueue: Instruction[],
 ): Map<number, string[]> {
   const result = new Map<number, string[]>();
 
@@ -141,7 +141,7 @@ function processInstructions(
 
 function processInstructions2(
   crateStacks: Map<number, string[]>,
-  instructionQueue: Instruction[]
+  instructionQueue: Instruction[],
 ): Map<number, string[]> {
   const result = new Map<number, string[]>();
 

@@ -44,6 +44,18 @@ export function* cycle<T>(iterable: Iterable<T>): Generator<T> {
   }
 }
 
+export function* enumerate<T>(
+  iterable: Iterable<T>,
+  start = 0,
+): Generator<[number, T]> {
+  let i = start;
+
+  for (const element of iterable) {
+    yield [i, element];
+    i += 1;
+  }
+}
+
 export function intersection<T>(setA: Set<T>, setB: Set<T>): Set<T> {
   const common = new Set<T>();
 
@@ -90,12 +102,12 @@ export function range(stop: number): Generator<number>;
 export function range(
   start: number,
   stop: number,
-  step?: number
+  step?: number,
 ): Generator<number>;
 export function* range(
   startOrStop: number,
   stop?: number,
-  step?: number
+  step?: number,
 ): Generator<number> {
   let start = 0;
 

@@ -1,5 +1,5 @@
 import { readFileSync } from 'fs';
-import { cycle } from '../shared';
+import { cycle } from '../../shared';
 
 type Wind = '<' | '>';
 
@@ -72,7 +72,7 @@ function dropRock2(
   tower: number[],
   windArray: Wind[],
   windIndex: number,
-  rock: number
+  rock: number,
 ): number {
   let height = tower.length + 3;
 
@@ -209,7 +209,7 @@ function part2(windData: string) {
   }
 
   console.log(
-    `Part 2: Tower height is ${tower.length + cycleHeight} units tall.`
+    `Part 2: Tower height is ${tower.length + cycleHeight} units tall.`,
   );
 }
 
