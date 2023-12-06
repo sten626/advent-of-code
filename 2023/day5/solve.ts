@@ -32,25 +32,25 @@ class AlmanacMap {
     const result: Range[] = [];
 
     while (queue.length > 0) {
-      const [startSeed, seedRangeLength] = queue.shift() as Range;
-      const endSeed = startSeed + seedRangeLength - 1;
+      const [source, sourceRangeLength] = queue.shift() as Range;
+      const endSeed = source + sourceRangeLength - 1;
       let processed = false;
 
-      for (const [destStart, sourceStart, rangeLength] of this.maps) {
-        const sourceEnd = sourceStart + rangeLength - 1;
+      for (const [destStart, sourceStart, mapRangeLength] of this.maps) {
+        const sourceEnd = sourceStart + mapRangeLength - 1;
 
         // Start of seeds is in range.
-        if (startSeed >= sourceStart && startSeed <= sourceEnd) {
+        if (source >= sourceStart && source <= sourceEnd) {
           if (endSeed >= sourceStart && endSeed <= sourceEnd) {
             // End of seeds is also in range.
-            result.push([destStart + startSeed - sourceStart, seedRangeLength]);
+            result.push([destStart + source - sourceStart, sourceRangeLength]);
             processed = true;
             break;
           } else {
             // End of seeds is outside of the range.
-            const inRangeLength = sourceEnd - startSeed + 1;
-            result.push([destStart + startSeed - sourceStart, inRangeLength]);
-            queue.push([sourceEnd + 1, seedRangeLength - inRangeLength]);
+            const inRangeLength = sourceEnd - source + 1;
+            result.push([destStart + source - sourceStart, inRangeLength]);
+            queue.push([sourceEnd + 1, sourceRangeLength - inRangeLength]);
             processed = true;
             break;
           }
@@ -58,7 +58,7 @@ class AlmanacMap {
           // Start seed out of range but end seed is in the range.
           const inRangeLength = endSeed - sourceStart + 1;
           result.push([destStart, inRangeLength]);
-          queue.push([startSeed, seedRangeLength - inRangeLength]);
+          queue.push([source, sourceRangeLength - inRangeLength]);
           processed = true;
           break;
         }
@@ -69,7 +69,7 @@ class AlmanacMap {
       }
 
       // Range didn't match any mappings.
-      result.push([startSeed, seedRangeLength]);
+      result.push([source, sourceRangeLength]);
     }
 
     return result;
