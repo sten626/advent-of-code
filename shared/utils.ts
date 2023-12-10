@@ -56,6 +56,21 @@ export function* enumerate<T>(
   }
 }
 
+export function gcd(...numbers: number[]): number {
+  // Greatest common divisor
+  if (numbers.length === 2) {
+    const [a, b] = numbers;
+
+    if (b === 0) {
+      return a;
+    }
+
+    return gcd(b, a % b);
+  }
+
+  return numbers.reduce((a, b) => gcd(a, b));
+}
+
 export function intersection<T>(setA: Set<T>, setB: Set<T>): Set<T> {
   const common = new Set<T>();
 
@@ -76,6 +91,10 @@ export function isSuperset<T>(set: Set<T>, subset: Set<T>): boolean {
   }
 
   return true;
+}
+
+export function lcm(...numbers: number[]): number {
+  return numbers.reduce((a, b) => (a * b) / gcd(a, b));
 }
 
 export function union<T>(setA: Set<T>, setB: Set<T>): Set<T> {
