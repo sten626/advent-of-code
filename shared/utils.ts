@@ -117,6 +117,15 @@ export function open(path: string): Interface {
   return rl;
 }
 
+export function* pairwise<T>(iterable: Iterable<T>): Generator<[T, T]> {
+  let a = iterable[Symbol.iterator]().next().value;
+
+  for (const b of iterable) {
+    yield [a, b];
+    a = b;
+  }
+}
+
 export function range(stop: number): Generator<number>;
 export function range(
   start: number,
