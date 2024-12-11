@@ -19,6 +19,7 @@
         "format": ["camelCase"],
         "leadingUnderscore": "allow"
       }
-    ]
+    ],
+    "no-shadow": ["error", { "builtInGlobals": true }]
   }
 }
